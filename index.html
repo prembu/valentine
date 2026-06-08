@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Priya ❤️</title>
-    <!-- Beautiful Romantic Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap">
+    <title>Urgent Question for Priya! 👀</title>
+    <!-- Modern and Fun Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap">
     
     <style>
         * {
@@ -15,7 +15,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffe5ec, #ffb3c6);
+            background: linear-gradient(135deg, #ffccd5, #ffb3c6);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,36 +26,39 @@
 
         #container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             padding: 50px 30px;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
-            max-width: 460px;
+            box-shadow: 0 20px 40px rgba(255, 75, 110, 0.25);
+            max-width: 480px;
             width: 90%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 3px dashed #ff4d6d;
             position: relative;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
         }
 
         #image-container {
             font-size: 80px;
             margin-bottom: 15px;
-            animation: pulse 1.5s infinite alternate;
+            display: inline-block;
         }
 
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
+        .spin-emoji {
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         #question {
-            font-family: 'Great Vibes', cursive;
-            font-size: 46px;
-            color: #d90429;
-            font-weight: bold;
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            color: #c9184a;
             margin-bottom: 35px;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         #options {
@@ -63,43 +66,41 @@
             justify-content: center;
             align-items: center;
             gap: 25px;
-            min-height: 80px;
+            min-height: 100px;
         }
 
         button {
-            padding: 14px 35px;
+            padding: 15px 35px;
             font-size: 18px;
             font-weight: 600;
             border: none;
-            border-radius: 50px;
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         #yes-button {
-            background: #d90429;
+            background: #38b000;
             color: white;
-            z-index: 10;
+            z-index: 99;
         }
 
         #yes-button:hover {
-            background: #ef233c;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(217, 4, 41, 0.4);
+            background: #007200;
+            transform: scale(1.1);
         }
 
         #no-button {
-            background: #4a5568;
+            background: #d90429;
             color: white;
             position: relative;
             transition: all 0.1s ease;
         }
 
-        /* Falling Hearts Animation */
-        .heart {
+        /* Falling Trash/Fun Elements Animation */
+        .falling-item {
             position: absolute;
-            color: #d90429;
             font-size: 24px;
             animation: fall linear forwards;
             z-index: 999;
@@ -108,7 +109,7 @@
 
         @keyframes fall {
             to {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
             }
         }
@@ -117,13 +118,13 @@
 <body>
 
     <div id="container">
-        <div id="image-container">💖</div> 
+        <div id="image-container">🤔</div> 
         
         <div id="text-container">
-            <div id="question">Priya, will you be mine forever? ❤️</div>
+            <div id="question">Priya, will you be my girlfriend? 🥺</div>
             <div id="options">
-                <button id="yes-button" onclick="selectOption('yes')">Yes 🥰</button>
-                <button id="no-button" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
+                <button id="yes-button" onclick="selectOption('yes')">Yes, of course! 😍</button>
+                <button id="no-button" onmouseover="moveNoButton()" onclick="moveNoButton()">No 😡</button>
             </div>
         </div>
     </div>
@@ -132,39 +133,45 @@
         let yesButtonScale = 1;
         let noClicks = 0;
 
-        // English messages for the running "No" button
+        // Funny dramatic messages when she tries to click NO
         const messages = [
-            "Priya, will you be mine forever? ❤️",
-            "Are you absolutely sure? 🥺",
-            "Please think about it again! 💖",
-            "No is not an option here! 😉",
-            "Just say Yes already, Priya! 🌹"
+            "Priya, will you be my girlfriend? 🥺",
+            "Wait... did you just try to click No? 😱",
+            "Error 404: 'No' option not found! ❌",
+            "Seriously? I will call your mom right now! 📞😂",
+            "Okay, now you are just playing with my feelings... 🥲",
+            "System Overload! Click YES to fix your computer! 🖥️🔥"
         ];
+
+        const emojis = ["🤔", "🤨", "🙄", "😳", "😭", "🤣"];
 
         function moveNoButton() {
             const noBtn = document.getElementById('no-button');
             const yesBtn = document.getElementById('yes-button');
             const questionText = document.getElementById('question');
+            const emojiContainer = document.getElementById('image-container');
             
-            // Move No button randomly
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+            // Move No button to random places
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
             
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
 
-            // Make Yes button bigger
-            yesButtonScale += 0.25;
+            // Make the YES button ridiculously huge
+            yesButtonScale += 0.3;
             yesBtn.style.transform = `scale(${yesButtonScale})`;
 
-            // Change messages
+            // Change funny messages and emojis
             noClicks++;
             if (noClicks < messages.length) {
                 questionText.innerText = messages[noClicks];
+                emojiContainer.innerText = emojis[noClicks];
             } else {
-                questionText.innerText = "Hehe, you only have one choice now! 👇❤️";
-                noBtn.style.display = 'none'; // Hide No button at the end
+                questionText.innerText = "Fine! Your 'No' button has been confiscated. Click YES! 👇🤪";
+                emojiContainer.innerText = "😜";
+                noBtn.style.display = 'none'; // No button completely vanishes
             }
         }
 
@@ -174,41 +181,42 @@
                     document.getElementById('no-button').style.display = 'none';
                 }
                 
-                // Show final beautiful Prem ❤️ Priya screen
-                document.getElementById('image-container').innerHTML = "💑";
-                document.getElementById('image-container').style.animation = "none";
+                // Funny Success Screen
+                document.getElementById('image-container').innerText = "🥳";
+                document.getElementById('image-container').classList.add('spin-emoji');
                 
                 document.getElementById('text-container').innerHTML = `
-                    <div id="question" style="font-size: 52px; margin-bottom: 10px; color: #d90429;">
-                        I Love You! 💖
+                    <div id="question" style="font-size: 36px; margin-bottom: 15px; color: #38b000;">
+                        Smart Choice, Priya! 🏆😂
                     </div>
-                    <div style="font-size: 32px; color: #2d3748; font-weight: 600; margin-bottom: 15px; font-family: 'Great Vibes', cursive;">
+                    <div style="font-size: 28px; color: #2d3748; font-weight: 600; margin-bottom: 15px; font-family: 'Fredoka One', cursive;">
                         Prem ❤️ Priya
                     </div>
-                    <p style="color: #4a5568; font-size: 16px; font-weight: 500; line-height: 1.5;">
-                        You have made me the happiest person alive! <br>
-                        Together forever and always. ♾️✨
+                    <p style="color: #4a5568; font-size: 16px; font-weight: 500; line-height: 1.6;">
+                        Your application has been accepted successfully! <br>
+                        ⚠️ <b>Note:</b> No refunds, cancellations, or exchanges allowed now. You are stuck with me forever! ♾️🔒✨
                     </p>
                 `;
 
-                // Start heart rain
-                setInterval(createHeart, 250);
+                // Rain of hearts and party poppers
+                setInterval(createFallingItem, 150);
             }
         }
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '-20px';
-            heart.style.animationDuration = (Math.random() * 2 + 2.5) + 's'; 
-            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            document.body.appendChild(heart);
+        function createFallingItem() {
+            const items = ['❤️', '🎉', '✨', '🍕', '🍟']; // Added junk food because girls love it!
+            const item = document.createElement('div');
+            item.classList.add('falling-item');
+            item.innerHTML = items[Math.floor(Math.random() * items.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.top = '-20px';
+            item.style.animationDuration = (Math.random() * 2 + 2) + 's'; 
+            item.style.fontSize = (Math.random() * 25 + 15) + 'px';
+            document.body.appendChild(item);
 
             setTimeout(() => {
-                heart.remove();
-            }, 4000);
+                item.remove();
+            }, 3000);
         }
     </script>
 </body>
