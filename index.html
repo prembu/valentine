@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Anjali ❤️</title>
-    <!-- खूबसूरत और मॉर्डन फोंट्स -->
+    <title>For My Priya ❤️</title>
+    <!-- Beautiful Romantic Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap">
     
     <style>
@@ -96,7 +96,7 @@
             transition: all 0.1s ease;
         }
 
-        /* गिरते हुए दिलों का एनिमेशन */
+        /* Falling Hearts Animation */
         .heart {
             position: absolute;
             color: #d90429;
@@ -117,11 +117,10 @@
 <body>
 
     <div id="container">
-        <!-- क्यूट लव रिएक्ट इमोजी -->
         <div id="image-container">💖</div> 
         
         <div id="text-container">
-            <div id="question">Anjali, will you be mine forever? ❤️</div>
+            <div id="question">Priya, will you be mine forever? ❤️</div>
             <div id="options">
                 <button id="yes-button" onclick="selectOption('yes')">Yes 🥰</button>
                 <button id="no-button" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
@@ -133,13 +132,13 @@
         let yesButtonScale = 1;
         let noClicks = 0;
 
-        // मज़ेदार और इमोशनल मैसेजेस जब वो No पर जाने की कोशिश करेगी
+        // English messages for the running "No" button
         const messages = [
-            "Anjali, will you be mine forever? ❤️",
-            "एक बार फिर सोच लो... 🥺",
-            "Please मत बोलो ना! 💖",
-            "No का तो ऑप्शन ही नहीं है! 😉",
-            "मान जाओ ना अंजलि! 🌹"
+            "Priya, will you be mine forever? ❤️",
+            "Are you absolutely sure? 🥺",
+            "Please think about it again! 💖",
+            "No is not an option here! 😉",
+            "Just say Yes already, Priya! 🌹"
         ];
 
         function moveNoButton() {
@@ -147,7 +146,7 @@
             const yesBtn = document.getElementById('yes-button');
             const questionText = document.getElementById('question');
             
-            // 1. No बटन को स्क्रीन पर कहीं भी रैंडमली भगाओ
+            // Move No button randomly
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
             
@@ -155,28 +154,27 @@
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
 
-            // 2. हर बार 'Yes' बटन का साइज और बड़ा करो ताकि उसका ध्यान सिर्फ Yes पर जाए
+            // Make Yes button bigger
             yesButtonScale += 0.25;
             yesBtn.style.transform = `scale(${yesButtonScale})`;
 
-            // 3. ऊपर लिखे हुए मैसेजेस को एक-एक करके बदलो
+            // Change messages
             noClicks++;
             if (noClicks < messages.length) {
                 questionText.innerText = messages[noClicks];
             } else {
-                questionText.innerText = "Hehe, अब तो सिर्फ 'Yes' ही दबाना पड़ेगा! 👇❤️";
-                noBtn.style.display = 'none'; // आखिर में No बटन को गायब कर दो
+                questionText.innerText = "Hehe, you only have one choice now! 👇❤️";
+                noBtn.style.display = 'none'; // Hide No button at the end
             }
         }
 
         function selectOption(option) {
             if (option === 'yes') {
-                // No बटन को हमेशा के लिए हटा दो
                 if(document.getElementById('no-button')) {
                     document.getElementById('no-button').style.display = 'none';
                 }
                 
-                // स्क्रीन पर 'Prem ❤️ Anjali' की खूबसूरत सक्सेस स्क्रीन लाओ
+                // Show final beautiful Prem ❤️ Priya screen
                 document.getElementById('image-container').innerHTML = "💑";
                 document.getElementById('image-container').style.animation = "none";
                 
@@ -184,16 +182,16 @@
                     <div id="question" style="font-size: 52px; margin-bottom: 10px; color: #d90429;">
                         I Love You! 💖
                     </div>
-                    <div style="font-size: 26px; color: #2d3748; font-weight: 600; margin-bottom: 15px; font-family: 'Great Vibes', cursive;">
-                        Prem ❤️ Anjali
+                    <div style="font-size: 32px; color: #2d3748; font-weight: 600; margin-bottom: 15px; font-family: 'Great Vibes', cursive;">
+                        Prem ❤️ Priya
                     </div>
-                    <p style="color: #4a5568; font-size: 15px; font-weight: 500; line-height: 1.5;">
-                        You made me the happiest person today! <br>
-                        अब हमेशा साथ रहेंगे। ♾️✨
+                    <p style="color: #4a5568; font-size: 16px; font-weight: 500; line-height: 1.5;">
+                        You have made me the happiest person alive! <br>
+                        Together forever and always. ♾️✨
                     </p>
                 `;
 
-                // पूरे स्क्रीन पर रोमांटिक लाल दिलों की बारिश शुरू करो
+                // Start heart rain
                 setInterval(createHeart, 250);
             }
         }
