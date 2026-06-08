@@ -3,22 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine?</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
-    <link rel="stylesheet" href="style.css"> <!-- Link to external stylesheet -->
+    <title>For My Anjali ❤️</title>
+    <!-- खूबसूरत और मॉर्डन फोंट्स -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffb3c6);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 50px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            max-width: 460px;
+            width: 90%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        #image-container {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        #question {
+            font-family: 'Great Vibes', cursive;
+            font-size: 46px;
+            color: #d90429;
+            font-weight: bold;
+            margin-bottom: 35px;
+            line-height: 1.2;
+        }
+
+        #options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 14px 35px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #yes-button {
+            background: #d90429;
+            color: white;
+            z-index: 10;
+        }
+
+        #yes-button:hover {
+            background: #ef233c;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(217, 4, 41, 0.4);
+        }
+
+        #no-button {
+            background: #4a5568;
+            color: white;
+            position: relative;
+            transition: all 0.1s ease;
+        }
+
+        /* गिरते हुए दिलों का एनिमेशन */
+        .heart {
+            position: absolute;
+            color: #d90429;
+            font-size: 24px;
+            animation: fall linear forwards;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
+
     <div id="container">
-        <div id="image-container"></div> <!-- Container for displaying images -->
+        <!-- क्यूट लव रिएक्ट इमोजी -->
+        <div id="image-container">💖</div> 
+        
         <div id="text-container">
-            <div id="question">Adi❤️, will you be my valentine?</div> <!-- Updated question -->
+            <div id="question">Anjali, will you be mine forever? ❤️</div>
             <div id="options">
-                <button id="yes-button" onclick="selectOption('yes')">Yes ❤️</button> <!-- Yes button -->
-                <button id="no-button" onclick="selectOption('no')">No</button> <!-- No button -->
+                <button id="yes-button" onclick="selectOption('yes')">Yes 🥰</button>
+                <button id="no-button" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+    <script>
+        let yesButtonScale = 1;
+        let noClicks = 0;
+
+        // मज़ेदार और इमोशनल मैसेजेस जब वो No पर जाने की कोशिश करेगी
+        const messages = [
+            "Anjali, will you be mine forever? ❤️",
+            "एक बार फिर सोच लो... 🥺",
+            "Please मत बोलो ना! 💖",
+            "No का तो ऑप्शन ही नहीं है! 😉",
+            "मान जाओ ना अंजलि! 🌹"
+        ];
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('no-button');
+            const yesBtn = document.getElementById('yes-button');
+            const questionText = document.getElementById('question');
+            
+            // 1. No बटन को स्क्रीन पर कहीं भी रैंडमली भगाओ
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // 2. हर बार 'Yes' बटन का साइज और बड़ा करो ताकि उसका ध्यान सिर्फ Yes पर जाए
+            yesButtonScale += 0.25;
+            yesBtn.style.transform = `scale(${yesButtonScale})`;
+
+            // 3. ऊपर लिखे हुए मैसेजेस को एक-एक करके बदलो
+            noClicks++;
+            if (noClicks < messages.length) {
+                questionText.innerText = messages[noClicks];
+            } else {
+                questionText.innerText = "Hehe, अब तो सिर्फ 'Yes' ही दबाना पड़ेगा! 👇❤️";
+                noBtn.style.display = 'none'; // आखिर में No बटन को गायब कर दो
+            }
+        }
+
+        function selectOption(option) {
+            if (option === 'yes') {
+                // No बटन को हमेशा के लिए हटा दो
+                if(document.getElementById('no-button')) {
+                    document.getElementById('no-button').style.display = 'none';
+                }
+                
+                // स्क्रीन पर 'Prem ❤️ Anjali' की खूबसूरत सक्सेस स्क्रीन लाओ
+                document.getElementById('image-container').innerHTML = "💑";
+                document.getElementById('image-container').style.animation = "none";
+                
+                document.getElementById('text-container').innerHTML = `
+                    <div id="question" style="font-size: 52px; margin-bottom: 10px; color: #d90429;">
+                        I Love You! 💖
+                    </div>
+                    <div style="font-size: 26px; color: #2d3748; font-weight: 600; margin-bottom: 15px; font-family: 'Great Vibes', cursive;">
+                        Prem ❤️ Anjali
+                    </div>
+                    <p style="color: #4a5568; font-size: 15px; font-weight: 500; line-height: 1.5;">
+                        You made me the happiest person today! <br>
+                        अब हमेशा साथ रहेंगे। ♾️✨
+                    </p>
+                `;
+
+                // पूरे स्क्रीन पर रोमांटिक लाल दिलों की बारिश शुरू करो
+                setInterval(createHeart, 250);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-20px';
+            heart.style.animationDuration = (Math.random() * 2 + 2.5) + 's'; 
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
